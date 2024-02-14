@@ -25,4 +25,6 @@ Mobile sdk for IronSource
   # ironSource
   s.static_framework = true
   s.dependency 'IronSourceSDK','7.7.0.0'
+  s.dependency 'IronSourceUnityAdsAdapter'
+  s.dependency 'IronSourceTapjoyAdapter'
 end
