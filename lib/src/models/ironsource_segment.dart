@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
-import 'package:logger/logger.dart';
+import 'dart:developer';
 
-final logger = Logger();
+import 'package:flutter/foundation.dart';
 
 /// Interface for "female" & "male" string values
 enum IronSourceUserGender { Female, Male }
@@ -27,13 +26,13 @@ class IronSourceSegment {
   /// - Already has 5 custom params or the [key] is one of the default segment params: returns false
   bool setCustom({required String key, required String value}) {
     if (customParameters.length == 5) {
-      logger.w('Failed to setCustom:{"$key": "$value"}. This segment already has 5 custom params.');
+      log('Failed to setCustom:{"$key": "$value"}. This segment already has 5 custom params.', name: "IronSource");
       return false;
     }
     if (['segmentName', 'age', 'gender', 'level', 'isPlaying', 'userCreationDate', 'iapTotal']
         .contains(key)) {
-      logger.w('Failed to setCustom:{"$key": "$value"}.'
-        ' Use the property for "$key", instead of custom params.');
+      log('Failed to setCustom:{"$key": "$value"}.'
+        ' Use the property for "$key", instead of custom params.', name: "IronSource");
       return false;
     }
     customParameters[key] = value;
