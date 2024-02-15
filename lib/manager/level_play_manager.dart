@@ -20,7 +20,6 @@ class LevelPlayManager {
 
     if(userId != null) IronSource.setUserId(userId);
     IronSource.setLevelPlayRewardedVideoListener(rewardedVideo);
-    IronSource.validateIntegration();
     if(rewardedVideoDelegate != null) rewardedVideo.setDelegate(rewardedVideoDelegate);
 
     await Future.wait([
@@ -28,6 +27,10 @@ class LevelPlayManager {
     ]);
 
     return completer.future;
+  }
+
+  void printIntegration() async {
+    await IronSource.validateIntegration();
   }
 
   Future<void> openRewardedVideo({

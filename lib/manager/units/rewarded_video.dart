@@ -32,8 +32,6 @@ class MilkLevelPlayRewardedVideoController extends LevelPlayRewardedVideoListene
       }
     }
 
-    print(_currentAuctionId);
-    print(_instances);
     var instance = _instances[_currentAuctionId]!;
     instance.setListeners(onAdRewarded: onAdRewarded, onAdClicked: onAdClicked);
     IronSource.showRewardedVideo(placementName: placementName);
