@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import '../ironsource_mediation.dart';
 
@@ -22,6 +23,7 @@ class LevelPlayManager {
     IronSource.setLevelPlayRewardedVideoListener(rewardedVideo);
     if(rewardedVideoDelegate != null) rewardedVideo.setDelegate(rewardedVideoDelegate);
 
+    await requestATT();
     await Future.wait([
       rewardedVideo.init()
     ]);
@@ -33,15 +35,22 @@ class LevelPlayManager {
     await IronSource.validateIntegration();
   }
 
+  Future<void> requestATT() async {
+    if(!Platform.isIOS) return;
+    if(await ATTrackingManager.requestTrackingAuthorization() == ATTStatus.NotDetermined) {
+      await ATTrackingManager.requestTrackingAuthorization();
+    }
+  }
+
   Future<void> openRewardedVideo({
     String? placementName,
     void Function(IronSourceRewardedVideoPlacement placement)? onAdRewarded,
     void Function(IronSourceRewardedVideoPlacement placement)? onAdClicked,
   }) {
     return rewardedVideo.open(
-        placementName: placementName,
-        onAdRewarded: onAdRewarded,
-        onAdClicked: onAdClicked
+      placementName: placementName,
+      onAdRewarded: onAdRewarded,
+      onAdClicked: onAdClicked
     );
   }
 
