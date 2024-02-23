@@ -37,7 +37,7 @@ class LevelPlayManager {
 
   Future<void> requestATT() async {
     if(!Platform.isIOS) return;
-    if(await ATTrackingManager.requestTrackingAuthorization() == ATTStatus.NotDetermined) {
+    if(await ATTrackingManager.getTrackingAuthorizationStatus() == ATTStatus.NotDetermined) {
       await ATTrackingManager.requestTrackingAuthorization();
     }
   }
