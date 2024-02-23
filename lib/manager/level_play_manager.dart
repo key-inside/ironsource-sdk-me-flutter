@@ -13,7 +13,7 @@ typedef LevelPlayEventListener = void Function(LevelPlayEvent type, IronSourceAd
 class LevelPlayManager {
   final MilkLevelPlayRewardedVideoController rewardedVideo = MilkLevelPlayRewardedVideoController._();
 
-  Future<void> init({required String appKey, String? userId, List<IronSourceAdUnit>? adUnits, MilkLevelPlayRewardedVideoDelegate? rewardedVideoDelegate}) async {
+  Future<void> init({required String appKey, String? userId, List<IronSourceAdUnit>? adUnits, MilkLevelPlayRewardedVideoDelegate? rewardedVideoDelegate, bool requestAtt = false}) async {
     var completer = Completer();
     IronSource.init(appKey: appKey, adUnits: adUnits)
         .then((_) => { completer.complete() })
@@ -23,7 +23,7 @@ class LevelPlayManager {
     IronSource.setLevelPlayRewardedVideoListener(rewardedVideo);
     if(rewardedVideoDelegate != null) rewardedVideo.setDelegate(rewardedVideoDelegate);
 
-    await requestATT();
+    if(requestAtt) await requestATT();
     await Future.wait([
       rewardedVideo.init()
     ]);
