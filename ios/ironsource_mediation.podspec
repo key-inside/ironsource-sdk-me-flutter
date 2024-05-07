@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'ironsource_mediation'
-  s.version          = '1.2.0'
+  s.version          = '1.2.5'
   s.summary          = 'The Leading Mobile Advertising Technology Platform'
   s.description      = <<-DESC
 Monetize & Promote Your Apps
@@ -24,7 +24,7 @@ Mobile sdk for IronSource
 
   # ironSource
   s.static_framework = true
-  s.dependency 'IronSourceSDK','7.8.0.0'
+  s.dependency 'IronSourceSDK','7.9.1.0'
   s.dependency 'IronSourceAdQualitySDK','7.17.0'
 
   s.dependency 'IronSourceUnityAdsAdapter'

@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0'
+        classpath 'com.android.tools.build:gradle:4.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -27,7 +27,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -41,8 +41,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // ironSource SDK
-    implementation 'com.ironsource.sdk:mediationsdk:7.8.1'
-    implementation 'com.ironsource:adqualitysdk:7.17.0'
+    implementation 'com.ironsource.sdk:mediationsdk:7.9.0'
+    implementation 'com.ironsource:adqualitysdk:7.19.1'
 
     implementation 'com.ironsource.adapters:unityadsadapter:4.3.34'
     implementation 'com.unity3d.ads:unity-ads:4.9.2'
